@@ -1,0 +1,20 @@
+.nyap {
+	margin: 0%;
+}
+img.avatar {
+	border-style: solid;
+	border-color: #a9a9a9;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+img.avatar.seleccionado {
+	border-width: 3px;
+	border-color: #86c911;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+}
+
+img.avatar.noSeleccionado {
+	border-width: 1px;
+	border-color: #a9a9a9;
+}
+

@@ -1,0 +1,63 @@
+
+#contdenom {
+  
+    box-sizing: border-box;
+    
+    height: auto;
+    
+    }
+
+
+    .target {
+    
+      font-size: 2.6vw;
+      color: #000000;
+      font-weight: 600;
+      font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+      font-weight: bold;
+      margin-top: 12%;
+      box-sizing: border-box;
+      text-align: center;
+     
+    }
+    
+
+  
+ #im1,#im2,#im3,#im4
+{
+
+   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+   border-radius: 40px;
+   object-fit: fixed;
+   width:15vw;
+   height: 15vw;
+  
+  
+}
+
+#im1,#im2,#im3,#im4:hover {
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  cursor:  url(../public/aprovechar.png) , pointer;
+  }
+
+
+
+#im1:active
+{
+  transform: translateY(4px);
+}
+
+#im2:active
+{
+  transform: translateY(4px);
+}
+
+#im3:active
+{
+  transform: translateY(4px);
+}
+#im4:active
+{
+  transform: translateY(4px);
+}
+
