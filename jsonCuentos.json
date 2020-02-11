@@ -1,0 +1,29 @@
+{
+  "cuento": [
+    {
+      "titulo": "Pedro el Pirata",
+      "nrocuento":"1",
+      "pasos": [
+        "Habia una vez un pirata llamado pedro , tenia un garfio en una mano, un parche en un ojo y una pata de palo",
+        "Una noche, durante una gran tormenta , pedro decidio parar en una isla hasta que calme la marea",
+        "Al llegar a la isla se topo con una gran cueva"
+      ],
+      "palabrasdistractores": ["pie","olas","casa"],
+      "palabrasobjetivo": ["mano","tormenta","cueva"]
+    },
+    
+    {
+      "titulo": "Alan el gerente",
+      "nrocuento":"2",
+      "pasos": [
+        "Un dia Alan se levanto para ir al trabajo con su camisa favorita",
+        "luego fue al trabajo con su maletin",
+        "Luego le mostro su pizzarra a sus compañeros"
+      ],
+      "palabrasdistractores": ["pantalon","mochila","pared"],
+      "palabrasobjetivo": ["camisa","maletin","pizzarra"]
+    }
+
+
+  ]
+}

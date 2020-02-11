@@ -1,0 +1,124 @@
+{"conceptos": [
+
+   {"concepto": "Gato","categoria_semantica":"Animales",  
+    "que_es":["Animal"],
+    "que_no_es":["Persona","Comida","Profesion","Objeto","Fruta","Mueble"],
+    "quien_es": ["Gato"],
+    "quien_no_es":["Perro","Leopardo","Pinguino"], 
+    "que_hace":["Maullar","Ronronear","Rasguñar","Cazar","Jugar"],
+    "que_no_hace":["Bailar","Ladrar","Pescar","Torear","Cantar","Llorar"],
+    "como_es":["Doméstico","Cariñoso","Amistoso ","Compañero"],
+    "como_no_es":["Salvaje","Agresivos","Atleta"]
+    },
+
+    {"concepto": "Perro","categoria_semantica":"Animales",  
+    "que_es":["Animal"],
+    "que_no_es":["Persona","Comida","Profesion","Objeto","Fruta","Mueble"],
+    "quien_es": ["Perro"],
+    "quien_no_es":["Gato","Lobo","Elefante"],
+    "que_hace":["Ladrar","Aullar","Jugar","Correr","Torear"],
+    "que_no_hace":["Hablar","Ronronear","Cantar","Gritar","Pescar"],
+    "como_es":["Domestico","Guardian","Jugueton","Compañero"],
+    "como_no_es":["Salvaje","Descuidado","Pensante","Dormilon"]
+    },
+
+    {"concepto": "Pinguino","categoria_semantica":"Animales",   
+    "que_es":["Animal"],
+    "que_no_es":["Persona","Comida","Profesion","Objeto","Fruta","Mueble"], 
+    "quien_es": ["Pinguino"],
+    "quien_no_es":["Delfin","Foca","Serpiente"],
+    "que_hace":["Nadar","Alimentarse","Pescar","Aletear","Correr"],
+    "que_no_hace":["Volar","Cantar","Ronronear","Torear","Maullar","Llorar"],
+    "como_es":["Pescador","Corredor","Aleateador","Friolento"],
+    "como_no_es":["Delgado","Colorido","Esbelto","Caluroso"]
+    },
+
+    {"concepto": "Caballo","categoria_semantica":"Animales", 
+    "que_es":["Animal"],
+    "que_no_es":["Persona","Comida","Profesion","Objeto","Fruta","Mueble"],   
+    "quien_es": ["Caballo"],
+    "quien_no_es":["Perro","Chancho","Burro"],
+    "que_hace":["Galopear","Alimentarse","Relinchar","Saltar","Correr"],
+    "que_no_hace":["Volar","Cantar","Ronronear","Torear","Maullar","Llorar","Bailar","Hablar"],
+    "como_es":["Inteligente","Corredor","Atleta"],
+    "como_no_es":["Delgado","Colorido","Esbelto","Caluroso","Peleador"]
+    },
+
+    {"concepto": "Serpiente","categoria_semantica":"Animales",  
+    "que_es":["Animal"],
+    "que_no_es":["Persona","Comida","Profesion","Objeto","Fruta","Mueble"],  
+    "quien_es": ["Serpiente"],
+    "quien_no_es":["Cocodrilo","Caballo","Delfin"],
+    "que_hace":["Atacar","Matar","Morder","Estrangular"],
+    "que_no_hace":["Volar","Curar","Ayudar","Gritar","Maullar"],
+    "como_es":["Solitaria","Violenta","Venenosa","Brillante","Salvaje","Astuta"],
+    "como_no_es":["Buena","Inofensiva","Ingenua","Domestica","Amigable"]
+    },
+    
+
+
+     
+    {"concepto": "Medico","categoria_semantica":"Profesiones",   
+    "que_es":["Profesion","Persona"],
+    "que_no_es":["Persona","Comida","Profesion","Objeto","Fruta","Mueble"], 
+    "quien_es": ["Medico"],
+    "quien_no_es":["Carpintero","Policia","Bombero"],
+    "que_hace":["Operar","Curar","Atiender","Cuidar"],
+    "que_no_hace":["Custodiar","Apagar","Serruchar","Matar"],
+    "como_es":["Paciente","Atento","Concentrado"],
+    "como_no_es":["Maldad","Desinteres","Violencia","Mentir"]
+    },
+
+    {"concepto": "Maestra","categoria_semantica":"Profesiones",  
+    "que_es":["Profesion","Persona"],
+    "que_no_es":["Vehiculo","Comida","Objeto","Fruta","Mueble"],  
+    "quien_es": ["Maestra"],
+    "quien_no_es":["Panadero","Policia","Medico"],
+    "que_hace":["Enseñar","Explicar","Ayudar","Educar"],
+    "que_no_hace":["Cocinar","Operar","Custodiar","Arreglar"],
+    "como_es":["Inteligente","Comprensiva","Participativa"],
+    "como_no_es":["Desatencion","Desinteres","Violencia","Mentir"]
+    },
+
+
+    {"concepto": "Banana","categoria_semantica":"Frutas",   
+    "que_es":["Fruta"],
+    "que_no_es":["Persona","Comida","Profesion","Objeto","Verdura","Mueble"], 
+    "quien_es": ["Banana"],
+    "quien_no_es":["Manzana","Naranja","Limon"],
+    "que_hace":["Comer","Disfrutar","Pelar"],
+    "que_no_hace":["Volar","Tirar","Lanzar","Arrojar"],
+    "como_es":["Amarillo","Cascara","Platano","Blanda"],
+    "como_no_es":["Roja","Naranja","Redonda","Verde"]
+    },
+  
+    {"concepto": "Uva","categoria_semantica":"Frutas",  
+    "que_es":["Fruta"],
+    "que_no_es":["Persona","Comida","Profesion","Objeto","Verdura","Mueble","Vehiculo"],  
+    "quien_es": ["Uva"],
+    "quien_no_es":["Manzana","Naranja","Tomate"],
+    "que_hace":["Comer","Disfrutar","Vino"],
+    "que_no_hace":["Volar","Tirar","Lanzar","Arrojar"],
+    "como_es":["Violeta","Cascara","Redonda","Blanda"],
+    "como_no_es":["Roja","Naranja","Cuadrada","Verde"]
+    },
+
+
+
+    {"concepto": "Auto","categoria_semantica":"Vehiculos",  
+    "que_es":["Vehiculo"],
+    "que_no_es":["Persona","Comida","Profesion","Objeto","Fruta","Mueble"],  
+    "quien_es": ["Auto"],
+    "quien_no_es":["Tren","Bicicleta","Moto"],
+    "que_hace":["Viajar","Circular","Transportar","Pasear","Circular"],
+    "que_no_hace":["Volar","Caminar","Flotar","Gritar"],
+    "como_es":["Comodidad","Seguridad","Velocidad"],
+    "como_no_es":["Incomodo","Lento","Inseguro"]
+    }
+
+
+   ]
+}
+
+
+
