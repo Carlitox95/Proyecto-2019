@@ -78,24 +78,22 @@ console.log(cuentos)
 /////EL SIGUIENTE WHILE SE ENCARGA DE MOSTRAR EL LISTADO DINAMICO DE CUENTOS/////
 /////////////////////////////////////////////////////////////////////////////////
 
-let div_cuentos = document.getElementById("listadocuentos"); //Creo un DIV para el listado
-div_cuentos.addEventListener("click", (e) => {
-    if (e.target.tagName === "IMG") {
-        blankAllCuentos();
-        //e.target.setAttribute("class", "collection-item avatar Seleccionado");
-        nroCuento = e.target.getAttribute("nroCuento");        
-        var li_select= document.getElementById("li"+nroCuento);        
-        li_select.setAttribute("class","collection-item avatar teal lighten-2 white-text text-darken-2");        
-    }
-});
+//Selecciono un concepto para activarlo
+function SeleccionarCuento(elementoCuento) {
+ blankAllCuentos(); //seteo los demas conceptos
+ nroCuento = elementoCuento.getAttribute("nroCuento"); //me quedo con el ID del concepto
+ elementoCuento.setAttribute("class","collection-item teal lighten-2 white-text text-darken-2"); //lo dejo seleccionado
+ }
 
-function blankAllCuentos() {
-    let cuentos_aux = document.getElementById("listadocuentos").getElementsByTagName("img");
-    for (let index = 0; index < cuentos_aux.length; index++) {
-        //cuentos_aux[index].setAttribute("class", "collection-item avatar noSeleccionado");
-        let li_select = document.getElementById("li"+index);
-        li_select.setAttribute("class","collection-item avatar noSeleccionado");       
-    }
+
+//Seteo los demas conceptos como no seleccionados
+function blankAllCuentos() {  
+ let cuentos = document.getElementById("listadocuentos").getElementsByTagName("A");
+ let index=0;
+    while (index<cuentos.length) {
+     cuentos[index].setAttribute("class","collection-item");
+     index++;
+    }  
 }
 
 let searchBarCuento = document.getElementById("buscarCuento").addEventListener("keyup", searchCuento);
@@ -103,7 +101,7 @@ function searchCuento() {
     var input, i, filter, li, ul, txtValue;
     input = document.getElementById("buscarCuento");
     filter = input.value.toUpperCase();
-    let array_aux = document.getElementById("listadocuentos").getElementsByTagName("img");
+    let array_aux = document.getElementById("listadocuentos").getElementsByTagName("a");
     for (i = 0; i < array_aux.length; i++) {
         a = array_aux[i].getAttribute("titulo");
         txtValue = a;
@@ -121,22 +119,19 @@ while (contadorcuento<cuentos.length) {
  let nro = parseInt(contadorcuento)+parseInt(1);
  let titulo = cuentos[contadorcuento].titulo;
  let nrocuento = contadorcuento;
- let li = document.createElement("li");
- li.setAttribute("class", "collection-item avatar noSeleccionado");
- li.setAttribute("id","li"+nrocuento);
- let img_cuento = document.createElement("img");
- img_cuento.setAttribute("id",nrocuento);
- img_cuento.setAttribute("class","circle");
- img_cuento.setAttribute("hight", "200");
- img_cuento.setAttribute("width", "200");
- img_cuento.setAttribute("nroCuento",nrocuento);
- img_cuento.setAttribute("titulo",titulo);
- img_cuento.src="../public/images/cuentos/"+nro+"/portada.jpg";
- let p1= document.createElement("p");
- let p1_content= document.createTextNode(titulo);
- li.appendChild(p1_content);
+ 
+ let li=document.createElement("li");
+ let a=document.createElement("a");
+ a.setAttribute("class","collection-item");
+ a.setAttribute("id",nrocuento);
+ a.setAttribute("nroCuento",nrocuento);
+ a.setAttribute("titulo",titulo);
+ a.href="#!";
+ a.addEventListener("click",function(){SeleccionarCuento(a)},false); //llamo a la funcion al clickear
+ let a_content = document.createTextNode(titulo);
+ a.appendChild(a_content);
  let listadocuentos=document.getElementById("listadocuentos");
- li.appendChild(img_cuento).appendChild(p1);
+ li.appendChild(a);
  listadocuentos.appendChild(li);  
  contadorcuento++;
 }
@@ -189,12 +184,10 @@ while (contador1<=listaAlumnos.length) {
  let listItem = document.createElement("div");
  let pal = document.createElement("p");
  pal.setAttribute("class", "nyap");
- listItem.setAttribute("class", "col s2 estudiante");
+ listItem.setAttribute("class", "col s6 estudiante");
  pal.innerHTML = nombreApellido;
  let img = document.createElement("img");
- img.setAttribute("class", "circle avatar noSeleccionado ");
- img.setAttribute("hight", "80");
- img.setAttribute("width", "80");
+ img.setAttribute("class", "circle avatar noSeleccionado "); 
  img.setAttribute("avatar", nombreApellido);
  img.setAttribute("nombre", listaAlumnos[contador1].nombre);
  img.setAttribute("apellido", listaAlumnos[contador1].apellido);

@@ -53,51 +53,44 @@ for (let index = 0; index < conceptosBD.length; index++) {
  let listaComoEsBD=[];
  let listaComoNoEsBD=[];
  
-
- //Defino cada QUERY para cada TABLA DEL EJERCICIO DEL CONCEPTO EN PARTICULAR
- let que_esBD=db.prepare("SELECT * FROM que_es Where id_concepto ="+id_concepto).all();
- let que_no_esBD=db.prepare("SELECT * FROM que_no_es Where id_concepto ="+id_concepto).all();
- let quien_esBD=db.prepare("SELECT * FROM quien_es where id_concepto="+id_concepto).all();
- let quien_no_esBD=db.prepare("SELECT * FROM quien_no_es where id_concepto="+id_concepto).all();
- let que_haceBD=db.prepare("SELECT * FROM que_hace where id_concepto="+id_concepto).all();
- let que_no_haceBD=db.prepare("SELECT * FROM que_no_hace where id_concepto="+id_concepto).all();
- let como_esBD=db.prepare("SELECT * FROM como_es where id_concepto="+id_concepto).all();
- let como_no_esBD=db.prepare("SELECT * FROM como_no_es where id_concepto="+id_concepto).all();
-
-    //Obtengo todos los QUE ES
-    for (let index=0; index < que_esBD.length; index++) {
-     listaQueEsBD.push(que_esBD[index].que_es);
-    }
-    //Obtengo todos los QUE NO ES
-    for (let index=0; index < que_no_esBD.length; index++) {
-      listaQueNoEsBD.push(que_no_esBD[index].que_no_es);
-    }
-    //Obtengo todos los QUIEN ES
-    for (let index=0; index < quien_esBD.length; index++) {
-     listaQuienEsBD.push(quien_esBD[index].quien_es);
-    }
-    //Obtengo todos los QUIEN NO ES
-    for (let index=0; index < quien_no_esBD.length; index++) {
-     listaQuienNoEsBD.push(quien_no_esBD[index].quien_no_es);
-    }
-    //Obtengo todos los QUE HACE
-    for (let index=0; index < que_haceBD.length; index++) {
-     listaQueHaceBD.push(que_haceBD[index].que_hace);
-    }
-    //Obtengo todos los QUE NO HACE
-    for (let index=0; index < que_no_haceBD.length; index++){
-     listaQueNoHaceBD.push(que_no_haceBD[index].que_no_hace);
-    }
-    //Obtengo todos los COMO ES
-    for (let index=0; index< como_esBD.length; index++) {
-     listaComoEsBD.push(como_esBD[index].como_es);
-    }
-    //Obtengo todos los COMO NO ES
-    for (let index=0; index < como_no_esBD.length; index++) {
-     listaComoNoEsBD.push(como_no_esBD[index].como_no_es);
-    }
-
-
+ //Defino mi QUERY para traerme todas las palabras para cada tipo 
+ let queryPalabras=db.prepare("SELECT * FROM conceptos_palabras Where id_concepto ="+id_concepto).all(); 
+ 
+    for (let index=0; index < queryPalabras.length; index++) {
+        //Obtengo todos los QUE ES
+        if (queryPalabras[index].tipo=="que_es") {
+         listaQueEsBD.push(queryPalabras[index].palabra);
+        } 
+        //Obtengo todos los QUE NO ES
+        if (queryPalabras[index].tipo=="que_no_es") {
+          listaQueNoEsBD.push(queryPalabras[index].palabra);
+        }        
+        //Obtengo todos los QUIEN ES
+        if (queryPalabras[index].tipo=="quien_es") {
+         listaQuienEsBD.push(queryPalabras[index].palabra);
+        }        
+        //Obtengo todos los QUIEN NO ES
+        if (queryPalabras[index].tipo=="quien_no_es") {
+         listaQuienNoEsBD.push(queryPalabras[index].palabra);
+        }        
+        //Obtengo todos los QUE HACE
+        if (queryPalabras[index].tipo=="que_hace") {
+         listaQueHaceBD.push(queryPalabras[index].palabra);
+        }        
+        //Obtengo todos los QUE NO HACE
+        if (queryPalabras[index].tipo=="que_no_hace") {
+         listaQueNoHaceBD.push(queryPalabras[index].palabra);
+        }
+        //Obtengo todos los COMO ES
+        if (queryPalabras[index].tipo=="como_es") {
+         listaComoEsBD.push(queryPalabras[index].palabra);
+        }
+        //Obtengo todos los COMO ES
+        if (queryPalabras[index].tipo=="como_no_es") {
+         listaComoNoEsBD.push(queryPalabras[index].palabra);
+        }      
+    } 
+    
  //Creo los cada atributo del OBJETO
  ConceptoActual.nroConcepto=id_concepto;
  ConceptoActual.concepto=conceptoNombre;
@@ -153,14 +146,7 @@ let categoriasSemanticas = obtenerCategoriasSemanticas(listaConceptos); //Obteng
 /////////////////////////////////////////////////////////////////////////////////
 
 let div_conceptos  = document.getElementById("listadoconceptos"); //Creo un DIV para el listado
-let div_categorias = document.getElementById("listadoconceptos"); //Creo un DIV para el listado
-listarCategoriasSemanticas(categoriasSemanticas); //Inicio listado las categorias Semanticas
-
-//Se realizar la seleccion de la categoria
-function seleccionarCategoria(categoria) {
- limpiarListaCategorias(); //limpio el listado de categorias
- obtenerConcepto(categoria); //obtengo los conceptos de la categoria semantica pedida 
-}
+listarConceptos(); //Inicializo el listado de los conceptos
 
 //Selecciono un concepto para activarlo
 function SeleccionarConcepto(elementoConcepto) {
@@ -170,20 +156,6 @@ function SeleccionarConcepto(elementoConcepto) {
  
 }
 
-//Funcion para recargar el Listado dinamico de los conceptos
-function restaurarListaConceptos() {
-    while (div_conceptos.firstChild) {
-     div_conceptos.removeChild(div_conceptos.firstChild);
-    }
-    listarCategoriasSemanticas(categoriasSemanticas);
-}
-
-//Funcion que limpia las categorias para dar lugar a la lista de los conceptos
-function limpiarListaCategorias() {   
-    while (div_categorias.firstChild) {
-     div_categorias.removeChild(div_categorias.firstChild);
-    }    
-}
 
 //Seteo los demas conceptos como no seleccionados
 function blankAllConceptos() {  
@@ -198,9 +170,7 @@ function blankAllConceptos() {
 let searchBarConceptos = document.getElementById("buscarConcepto").addEventListener("keyup", searchConcepto);
 
 //Busco un concepto que cumpla con la busqueda que se ingresa por teclado
-function searchConcepto() {
-    limpiarListaCategorias(); //limpio todas las categorias
-    listarConceptos(); //me traigo y genero el listado con todos los conceptos para despues buscar en el
+function searchConcepto() {  
     var input, i, filter, li, ul, txtValue;
     input = document.getElementById("buscarConcepto");
     filter = input.value.toUpperCase();
@@ -218,53 +188,7 @@ function searchConcepto() {
     }
 }
 
-//Funcion que me lista todas las categorias semanticas para seleccionar
-function listarCategoriasSemanticas(categoriasSemanticas){
- var contadorCategorias=0; //contador 
-    while (contadorCategorias<categoriasSemanticas.length) {
-     let categoria = categoriasSemanticas[contadorCategorias];   
-     let nroCategoria="categoria"+contadorCategorias;  
-     let li=document.createElement("li");
-     let a=document.createElement("a");
-     a.setAttribute("class","collection-item active");
-     a.setAttribute("nroCategoria",contadorCategorias);
-     a.setAttribute("id",nroCategoria);
-     a.setAttribute("categoria",categoria);
-     a.addEventListener("click",function(){seleccionarCategoria(categoria)},false); //llamo a la funcion al clickear
-     a.href="#!";
-     let a_content = document.createTextNode(categoria);
-     a.appendChild(a_content);
-     li.appendChild(a);     
-     div_categorias.appendChild(li);
-     contadorCategorias++;
-    }    
-}
 
-
-
-//Funcion que me retorna todos los elementos de una categoria semantica seleccionada previamente
-function obtenerConcepto (unaCategoriaSemantica) {
- var contadorconceptos=0; //contador
-    while (contadorconceptos<listaConceptos.length) {
-     let concepto = listaConceptos[contadorconceptos].concepto;
-     let categoriaSemantica=listaConceptos[contadorconceptos].categoria_semantica;
-       if(categoriaSemantica == unaCategoriaSemantica) {
-         let li=document.createElement("li");
-         let a=document.createElement("a");
-         a.setAttribute("class","collection-item");
-         a.setAttribute("nroConcepto",contadorconceptos);
-         a.setAttribute("id","concepto"+contadorconceptos);
-         a.setAttribute("concepto",concepto);
-         a.href="#!";
-         a.addEventListener("click",function(){SeleccionarConcepto(a)},false); //llamo a la funcion al clickear
-         let a_content = document.createTextNode(concepto);
-         a.appendChild(a_content);
-         li.appendChild(a);
-         div_conceptos.appendChild(li);
-        }  
-     contadorconceptos++;
-    }
-}
 
 //Genero el listado de todos los conceptos
 function listarConceptos() {
@@ -334,7 +258,7 @@ while (contadoralumno<=listaAlumnos.length) {
  let listItem = document.createElement("div");
  let pal = document.createElement("p");
  pal.setAttribute("class", "nyap");
- listItem.setAttribute("class", "col s2 estudiante");
+ listItem.setAttribute('class', 'col s6 estudiante');
  pal.innerHTML = nombreApellido;
  let img = document.createElement("img");
  img.setAttribute("class", "circle avatar noSeleccionado ");
@@ -372,10 +296,10 @@ function iniciarEjercicio() {
  //console.log(concepto_definido);
 
     if ((alumno_definido== null) || (concepto_definido == null)) {
-     //alert("Debe seleccionar un estudiante y un concepto");
+     
      //const Swal = require("sweetalert2");
         Swal.fire({
-         //imageUrl: "../public/images/otravez.png",
+        
          width: 400,
          imageWidth: 200,
          imageHeight: 300,

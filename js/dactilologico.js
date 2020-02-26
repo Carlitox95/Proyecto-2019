@@ -13,46 +13,6 @@ const Swal = require("sweetalert2");
 console.log(datosejercicio)
 
 
-//////////////////////////////////////////////////////////////////////////////////////
-//////////////Funciones asociadas a los botones de progreso //////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////
-
-//Defino de forma anticipada la cantidad de repeticiones
-document.getElementById("repe").innerHTML="0"; //seteo en las repeticiones
-document.getElementById("total").innerHTML=repeticiones; //seteo las repeticiones
-
-//Defino la cantidad de botones que voy a crear , cantidad = cantidad repeticiones
-var i=0;
-while (i < ejercitacion.length) {
- var button = document.createElement("button");	
- button.className="siguiente";
- //clases anterior ; actual ; siguiente
- button.setAttribute("id","boton"+i);
- var pagination = document.getElementById("pagination");
- pagination.appendChild(button);
- i++; //incremento el contador
-}
-
-//Funcion para avanzar o retroceder en las repeticiones 
-function recalcularBotones(pasoActual,etapa) { 
- 
-
-    if (etapa=="volver") {
-     let paso=pasoActual + 1;    	 
-     let indiceBoton="boton"+paso;
-     let botonActual= document.getElementById(indiceBoton).className="siguiente";       
-    }
-
-    if (etapa=="avanzar") {
-        for (let index = 0; index <= pasoActual; index++) { 
-         let indiceBoton="boton"+index;
-         let botonActual= document.getElementById(indiceBoton).className="correcta";
-        }     
-    }
-
-
-}
-
 
 //////////////////////////////////////////////////////////////////////////////////////
 //////////////Funciones que le dan la funcionalidad al ejercicio//////////////////////
@@ -113,7 +73,6 @@ function retrocederEtapa(){
      document.getElementById("contenedorejercicio2").innerHTML=" ";
      //tengo que eliminar el contenido de este div contenedorejercicio
      --pasoActual;     
-     recalcularBotones(pasoActual,"volver");
      generarImagenes(ejercitacion,pasoActual); 
     }
 
@@ -123,7 +82,6 @@ function retrocederEtapa(){
 //Funcion que la utilizo para avanzar un nuevo paso
 function avanzarEtapa(){ 	
     if (pasoActual==(ejercitacion.length-parseInt(1))) {
-     recalcularBotones('correcta');
      finalEjercicio();
     }
     else {
@@ -131,7 +89,6 @@ function avanzarEtapa(){
      document.getElementById("contenedorejercicio2").innerHTML=" ";
      //tengo que eliminar el contenido de este div contenedorejercicio
      pasoActual++;
-     recalcularBotones(pasoActual,"avanzar");
      generarImagenes(ejercitacion,pasoActual); //si no es el final vuelvo a generar otra opcion
     }
 } 

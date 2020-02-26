@@ -33,47 +33,6 @@ iniciarEjercicio(); //damos por iniciado el ejercicio
 //avazarEtapa(0);
 
 
-//////////////////////////////////////////////////////////////////////////////////////
-//////////////Funciones asociadas a los botones de progreso //////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////
-
-//Defino de forma anticipada la cantidad de repeticiones
-document.getElementById("repe").innerHTML="0"; //seteo en las repeticiones
-document.getElementById("total").innerHTML="3"; //seteo las repeticiones
-
-//Defino la cantidad de botones que voy a crear , cantidad = cantidad repeticiones
-var i=0;
-while (i < 4) {
- var button = document.createElement("button");	
- button.className="siguiente";
- //clases anterior ; actual ; siguiente
- button.setAttribute("id",i);
- var pagination = document.getElementById("pagination");
- pagination.appendChild(button);
- i++; //incremento el contador
-}
-
-//Funcion para avanzar en las repeticiones 
-function recalcularBotones(opcion) {
- var actual= document.getElementById("repe").innerHTML;
-    if (parseInt(actual)<parseInt(4)) {
-  	 repeticiones_nuevas= parseInt(actual)+parseInt(1);
-  	 document.getElementById("repe").innerHTML=repeticiones_nuevas;
-        if (opcion=="correcta") {     	 
-         var botonactual= document.getElementById(actual);
-         botonactual.className="correcta";
-        }
-        else {
-         var botonactual= document.getElementById(actual);
-         botonactual.className="incorrecta";
-        }
-    }
-    else {
-      //alert("Actual="+actual+" | repeticion="+3);
-      //alert("Termino el Ejercicio");
-    }
-}
-
 
 //////////////////////////////////////////////////////////////////////////////////////
 //////////////Funciones que le dan la funcionalidad al ejercicio//////////////////////
@@ -117,7 +76,7 @@ function generarImagenes (concepto,cantidadDistractores) {
 
  //genero el contenido de las imagenes
  let pasoFase = document.getElementById("quien_es");
- let claseDiv ="col s5"; //por defecto les voy a poner un tamaño de columna de 5
+ let claseDiv ="col s"; //por defecto les voy a poner un tamaño de columna de 5
  let conceptos= []; //almaceno los conceptos tando el verdadero como los falsos en un array
  conceptos[0] = concepto.quien_es[0]; //Concepto acertado
  //palabrasEjercitadas.push(conceptos[0]); //agrego las palabras al listado de palabras ejercitadas
@@ -130,22 +89,23 @@ function generarImagenes (concepto,cantidadDistractores) {
 
     //Dependiendo de la cantidad de distractores voy a definir el estilo (si son pocos hago imagenes mas grandes)
     if (cantidadDistractores > 1) {
-     claseDiv ="col s3";
+     claseDiv ="clasediv col s";
     }
     else {
-     claseDiv ="col s5";
+     claseDiv ="clasediv col s";
     }
 
  //palabrasEjercitadas.push(concepto[0]); //Agrego el concepto a ejercitar en mi array posterior para los resultados
- var centerDiv=document.createElement("center"); //creo un center para meter dentro las imagenes y que quede ordenado
+ var centerDiv=document.createElement("div"); //creo un center para meter dentro las imagenes y que quede ordenado
+ centerDiv.setAttribute("class","contenedorImagenes");
 
  //Creo el DIV que contiene la opcion correcta
  let divCorrecto=document.createElement("div"); 
  divCorrecto.setAttribute("class",claseDiv);  
+
  let imagenCorrecta= document.createElement("img"); //Imagen 1 es la opcion correcta 
  imagenCorrecta.setAttribute("class","material");
- imagenCorrecta.setAttribute("width","250px");
- imagenCorrecta.setAttribute("height","250px");
+
  imagenCorrecta.src=link_imagen+conceptos[0]+".jpg";
  imagenCorrecta.addEventListener("click", opcionCorrecta );
  divCorrecto.appendChild(imagenCorrecta);
@@ -157,10 +117,12 @@ function generarImagenes (concepto,cantidadDistractores) {
      //Creacion de las "index" cantidad de imagenes incorrectas
      let div=document.createElement("div");
      div.setAttribute("class",claseDiv);
+
+     
+    
      let imagen=document.createElement("img");
      imagen.setAttribute("class","material");
-     imagen.setAttribute("width","250px");
-     imagen.setAttribute("height","250px");
+  
      imagen.src=link_imagen+conceptos[index]+".jpg";
      imagen.addEventListener("click", opcionIncorrecta );  
      div.appendChild(imagen); //este es nuestro div para dicha opcion incorrecta  
@@ -226,8 +188,8 @@ function generarOpciones(divFase,palabrasFase,cantidadDistractores) {
  var aleatorioCorrecto = Math.floor(Math.random()*(parseInt(parseInt(array_correcto.length)-1)+1));
  //Crear el boton de la opcion correcta
  var centerDiv=document.createElement("center");
- var aButtonCorrecto=document.createElement("a");
- aButtonCorrecto.className="waves-effect waves-light btn-large separarBotones";
+ var aButtonCorrecto=document.createElement("button");
+ aButtonCorrecto.className="teal lighten-3 separarBotones";
  aButtonCorrecto.addEventListener("click",function(){opcionCorrecta()},false); //llamo a la funcion al clickear
  var aButtonCorrectoContent=document.createTextNode(array_correcto[aleatorioCorrecto]);
  aButtonCorrecto.appendChild(aButtonCorrectoContent); 
@@ -241,8 +203,8 @@ function generarOpciones(divFase,palabrasFase,cantidadDistractores) {
  //Creamos los botones para las opciones incorrectas
     for (let index = 1; index <= cantidadDistractores; index++) {     
      let opcionSeleccionadaAleatoria = aleatoriosRequeridos[index-1];    
-     let aButton=document.createElement("a");
-     aButton.className="waves-effect waves-light btn-large separarBotones";
+     let aButton=document.createElement("button");
+     aButton.className="teal lighten-3 separarBotones";
      aButton.addEventListener("click",function(){opcionIncorrecta()},false); //llamo a la funcion al clickear
      var aButtonContent=document.createTextNode(array_incorrecto[opcionSeleccionadaAleatoria]); //esto deberia ser aleatorio
      aButton.appendChild(aButtonContent);       
@@ -293,16 +255,15 @@ function opcionCorrecta() {
     //alert("Opcion correcta"); 
     var nroFase= document.getElementById("fase").innerHTML; 
     cantidadAciertos++;
-    recalcularBotones('correcta');
+   
     aciertoEjercicio();
-    avanzarEtapa(nroFase);
+   setTimeout(function(){ avanzarEtapa(nroFase);  }, 1000); //espero 1seg para avanzar
 }
 
 //Funcion que activa si selecciono mal
 function opcionIncorrecta() {
     //alert("Opcion Incorrecta");
-    var nroFase= document.getElementById("fase").innerHTML;
-    //recalcularBotones('incorrecta');
+    var nroFase= document.getElementById("fase").innerHTML;   
     errorEjercicio();
     //avanzarEtapa(nroFase);
 }
