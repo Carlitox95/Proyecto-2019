@@ -109,38 +109,50 @@ body
   height: 5vw;
   color: #ffffff;
   font-family: "Roboto", sans-serif;
-  font-size: 2.3vw;
+  font-size: 2vw;
   border-color: #86D6C6;
   border-radius: 35px 35px 35px 35px;
   -moz-border-radius: 35px 35px 35px 35px;
   -webkit-border-radius: 35px 35px 35px 35px;
   box-sizing: border-box;
-  box-shadow: 0 14px 50px rgba(0, 0, 0, 0.12), 0 10px 10px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
+
+.separarBotones:active 
+{    
+   transform: translateY(2px);
+}
+
+.separarBotones:hover 
+{
+    box-shadow: 0 10px 18px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+
 
 
 .quees
 {
   width: 53vw;
  
-  margin-top: 4%;
+  margin-top: 17%;
   
 
 }
 
 .quehace
 {
-  width: 51vw;
+  width: 53vw;
   margin-left: 7%;
-  margin-top: 4%;
+  margin-top: 17%;
 }
 
 
 .comoes
 {
-  width: 51vw;
+  width: 53vw;
   margin-left: 7%;
-  margin-top: 4%;
+  margin-top: 17%;
 }
 
 
@@ -166,20 +178,24 @@ body
 {
 
     width: 75vw;
-    margin-top: 4%;
-  
+    margin-top: 17%;
+     
+    
    
 }
 
 .contenedorImagenes {
  display: flex;
- justify-content: center;
- align-items: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+ 
 }
 
 .claseDiv
 {
-  margin-left: 4%;
+  margin-left: 2%;
+  margin-right: 2%;
 
 }
 

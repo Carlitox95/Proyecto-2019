@@ -52,6 +52,7 @@ body
 	font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
 	margin-top: 8%;
 }
+
 img.avatar 
 {
 	border-style: solid;
@@ -92,7 +93,10 @@ img.avatar.noSeleccionado
  font-size:1vw;
 }
 
-
+.estudiante
+{
+	text-align: center;
+}
 #textoestudiante
 {
 	color: #707070;
@@ -125,34 +129,37 @@ img.avatar.noSeleccionado
 	height: 19vw;
 	overflow: auto;
   width: 26vw;
-  margin-left: 7%;
+  
   margin-top: -2%;
 	
 }
 
 .contenedorestudiantes
 {
-  margin-top: 6%;
+  margin-top: 8%;
 }
 
 .contenedorcuentos
 {
-  margin-top: 6%;
+  margin-top: 8%;
   width: 26vw;
 }
+
 
 
 
 #ilustracion {
 	width: 13vw;
 	height: 26vw;
-	margin-left: 36%;
-	margin-top: 10%;
+  margin-top: 4%;
+  margin-left: 11%;
+	
 }
+
 
 .comenzar 
 {
-	width: 17.5vw;
+	width: 15.5vw;
 	height: 4.4vw;
 	color: #ffffff;
 	font-family: "Roboto";
@@ -162,7 +169,7 @@ img.avatar.noSeleccionado
 	-moz-border-radius: 35px 35px 35px 35px;
 	-webkit-border-radius: 35px 35px 35px 35px;
 	box-sizing: border-box;
-  margin-left: -2%;
+  
   margin-top: 25%;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.10), 0 10px 10px rgba(0, 0, 0, 0.10);
   
@@ -179,13 +186,6 @@ img.avatar.noSeleccionado
 	box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12), 0 15px 12px rgba(0, 0, 0, 0.12);
 }
 
-#ilustracion {
-	width: 13vw;
-	height: 26vw;
-  margin-top: 4%;
-  margin-left: -2%;
-	
-}
 
 
 
@@ -212,4 +212,12 @@ img.avatar.noSeleccionado
  width: 23vw;
  margin-left: 7%;
  margin-top: -2%;	
+}
+
+
+.contenedorderecha
+{
+    width: 18vw;
+    height: 70vh ;
+    margin-top: 1%;
 }

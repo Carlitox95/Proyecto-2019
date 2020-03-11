@@ -44,6 +44,11 @@ body
 	font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
 }
 
+.estudiante
+{
+	text-align: center;
+}
+
 #terminar 
 {
 	color: aliceblue;
@@ -118,10 +123,10 @@ img.avatar.noSeleccionado
 
 #listadoalumnos
 {
-  height: 19vw;
+  height: 17vw;
   overflow: auto;
   width: 26vw;
-  margin-left: 7%;
+  
   margin-top: -2%;	
 }
 
@@ -155,7 +160,7 @@ img.avatar.noSeleccionado
 
 .comenzar 
 {
-	width: 17.5vw;
+	width: 15.5vw;
 	height: 4.4vw;
 	color: #ffffff;
 	font-family: "Roboto";
@@ -165,8 +170,8 @@ img.avatar.noSeleccionado
 	-moz-border-radius: 35px 35px 35px 35px;
 	-webkit-border-radius: 35px 35px 35px 35px;
 	box-sizing: border-box;
-  margin-left: -4%;
-  margin-top: -5%;
+
+  margin-top: 25%;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.10), 0 10px 10px rgba(0, 0, 0, 0.10);
   
 
@@ -186,7 +191,7 @@ img.avatar.noSeleccionado
 	width: 13vw;
 	height: 26vw;
   margin-top: 4%;
-  margin-left: -2%;
+  margin-left: 11%;
 	
 }
 
@@ -222,3 +227,13 @@ img.avatar.noSeleccionado
 {
   margin-top: 0%;
 }
+
+
+.contenedorderecha
+{
+    width: 18vw;
+    height: 70vh ;
+    margin-top: 1%;
+}
+
+

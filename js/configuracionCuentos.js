@@ -187,7 +187,8 @@ while (contador1<=listaAlumnos.length) {
  listItem.setAttribute("class", "col s6 estudiante");
  pal.innerHTML = nombreApellido;
  let img = document.createElement("img");
- img.setAttribute("class", "circle avatar noSeleccionado "); 
+ img.setAttribute("class", "circle avatar noSeleccionado ");
+ 
  img.setAttribute("avatar", nombreApellido);
  img.setAttribute("nombre", listaAlumnos[contador1].nombre);
  img.setAttribute("apellido", listaAlumnos[contador1].apellido);
@@ -211,23 +212,22 @@ function iniciarEjercicio() {
  //console.log(alumno_definido);
  //console.log(cuento_definido);
 
-    if ((alumno_definido== null) || (cuento_definido == null)) {
+    if ((alumno_definido== null)) {
      //alert("Debe seleccionar un estudiante y un cuento");
-        Swal.fire({
-         //imageUrl: "../public/images/otravez.png",
-         width: 400,
-         imageWidth: 200,
-         imageHeight: 300,
-         background: "#e4f2f0",
-         title: "Debe seleccionar un estudiante y un cuento",
-         showConfirmButton: false,
-         timer: 1000
-        });
+     Swal.fire({ title: 'DEBE SELECCIONAR UN ESTUDIANTE', confirmButtonColor: '#86D6C6', type: 'warning' });
     }
-    else {
-     localStorage.setItem("configCuentos", JSON.stringify({cuento:cuento_definido,alumno:alumno_definido}));
-     location.href = "cuento.html";  
+    else
+    {
+        if ( (cuento_definido == null)) {
+            //alert("Debe seleccionar un estudiante y un cuento");
+            Swal.fire({ title: 'DEBE SELECCIONAR UN CUENTO', confirmButtonColor: '#86D6C6', type: 'warning' });
+           }
+           else {
+            localStorage.setItem("configCuentos", JSON.stringify({cuento:cuento_definido,alumno:alumno_definido}));
+            location.href = "cuento.html";  
+           }
     }
+    
  
 }
 
